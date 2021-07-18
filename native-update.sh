@@ -1,0 +1,1 @@
+aws lambda update-function-code --function-name AlexaKetoHelperNative --zip-file fileb:///mnt/c/dev/workspaces/keto/alexa-keto-helper/build/function.zip --cli-connect-timeout 0

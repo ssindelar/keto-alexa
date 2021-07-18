@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+    id 'io.franzbecker.gradle-lombok' version '3.1.0'
+}
+
+repositories {
+     mavenLocal()
+     mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-amazon-lambda'
+    implementation 'io.quarkus:quarkus-amazon-alexa'
+    implementation 'io.quarkus:quarkus-amazon-dynamodb'
+    
+    implementation 'org.projectlombok:lombok:1.18.12'
+    implementation 'com.google.guava:guava:29.0-jre'
+
+    testImplementation 'io.quarkus:quarkus-test-amazon-lambda'
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation 'org.assertj:assertj-core'
+}
+
+group 'de.sindelar'
+version '1.0-SNAPSHOT'
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
